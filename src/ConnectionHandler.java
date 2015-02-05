@@ -25,15 +25,20 @@ public class ConnectionHandler extends Thread {
             String requestString = "";
 
             while (br.ready() || requestString.length() == 0) {
-                System.out.println(requestString);
+                //System.out.println(requestString);
                 requestString += (char) br.read();
             }
+            if (requestString.contains("Connection: keep-alive")) {
+                s.setKeepAlive(true);
+            }
+            //System.out.println(requestString);
             HttpRequest req = new HttpRequest(requestString);
-            HttpResponse res = new HttpResponse(req);
+            HttpResponse res = new HttpResponse(req,pw,s);
 
-            pw.write(res.response.toCharArray());
-            pw.close();
-            br.close();
+            //pw.write(res.response.toCharArray());
+            //pw.close();
+            //br.close();
+            //System.out.println(s.isClosed());
             s.close();
 
         } catch (Exception ex) {
