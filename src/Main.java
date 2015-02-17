@@ -15,7 +15,7 @@ public class Main {
 
     public void runServer() throws Exception {
         System.out.println("Sever is started");
-        serverSocket = new ServerSocket(136);
+        serverSocket = new ServerSocket(137);
         acceptRequests();
     }
 

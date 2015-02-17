@@ -33,6 +33,8 @@ public class ConnectionHandler extends Thread {
             }
             //System.out.println(requestString);
             HttpRequest req = new HttpRequest(requestString);
+            System.out.println("la request es "  + requestString);
+            System.out.println("yaaa");
             HttpResponse res = new HttpResponse(req,pw,s);
 
             //pw.write(res.response.toCharArray());
